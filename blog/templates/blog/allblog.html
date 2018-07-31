@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -35,38 +34,20 @@
 
     <main role="main">
 
-      <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Hi, I'm XD</h1>
-          <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor dapibus pretium. Nam tincidunt nisi elementum augue tempus lobortis. Suspendisse a sodales sapien.</p>
-          <p>
-            <a href="mailto:xuandeng1029@gmail.com" class="btn btn-primary my-2">Email</a>
-          </p>
-          <img src="{% static 'CJLK2771.jpeg' %}" alt="" height="400px">
-        </div>
-      </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-
-          <div class="row">
-
-            {% for job in job_list %}
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="{{job.image.url}}" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">{{job.summary}}</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                  </div>
-                </div>
-              </div>
-            </div>
+            <h1 class="text-center pt-3">XD's Blog</h1>
+            <br>
+            <br>
+            <h3>Latest Posts</h3>
+            <hr>
+            {% for blog in blogs %}
+                <h3><a href="{% url 'blog:details' blog_id=blog.id %}">{{blog.title}}</a></h3>
+                <p>{{blog.pub_date_formated}}</p>
+                <img class="img-fluid" src="{{blog.image.url}}" width="200px">
+                <p>{{blog.summary}}</p>
+                <br>
             {% endfor %}
-            
-          </div>
         </div>
-      </div>
 
     </main>
 
